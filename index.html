@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Routine</title>
     <base href="http://px.neptuo.com">
@@ -15,6 +16,17 @@
     
     <script type="text/javascript">
         (function(window) { 
+            const updateHistory = Ajax.prototype._UpdateHistory;
+
+            Ajax.prototype._UpdateHistory = function (url, replace) {
+                if (url) {
+                    var u = new URL(url);
+                    url = url.replace(u.origin, location.origin);
+                }
+
+                updateHistory.call(this, url, replace);
+            }
+
             var ajax = new Ajax({ selector: ".px", parentPageId: null, modifyUrl: true }); 
             window["ajax"] = ajax; 
             ajax.Initialize($(document.body)); 

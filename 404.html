@@ -45,10 +45,7 @@
             var ajax = new Ajax({ selector: ".px", parentPageId: null, modifyUrl: true }); 
             window["ajax"] = ajax; 
             ajax.Initialize($(document.body)); 
-        })({ 
-            location: { href: window.location.href }, 
-            addEventListener: function() { } 
-        });
+        })(window);
 
         $(".px").find("a").attr("href", location.pathname).click();
     </script>

@@ -20,7 +20,7 @@
     
     <script type="text/javascript">
         (function(window) { 
-            const baseUrl = "https://pixely.pernate.cz";
+            const baseUrl = document.querySelector("base").href;
             const updateHistory = Ajax.prototype._UpdateHistory;
             const load = Ajax.prototype.Load;
 

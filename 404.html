@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     
     <title>Pixel Routine</title>
     <base href="https://pixely.pernate.cz">
 
-    <link rel="stylesheet" href="https://pixelroutine.neptuo.com/css/fontawesome/all.min.css?version=v1" type="text/css">
+    <link href="/file.php?rid=7" rel="icon" type="image/png" />
+    
+    <link href="https://pixelroutine.neptuo.com/manifest.json" rel="manifest" />
+    <link href="https://pixelroutine.neptuo.com/css/fontawesome/all.min.css?version=v1" rel="stylesheet" type="text/css">
 
     <script src="https://pixelroutine.neptuo.com/js/jquery-3.5.1.min.js?version=v1"></script>
     <script src="https://pixelroutine.neptuo.com/js/ajax.js?version=v1"></script>
@@ -17,10 +22,16 @@
     <div class="px">
         <a href="/">Initializing...</a>
     </div>
-    
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register('~/file.php?fid=10');
+        }
+    </script>
     <script type="text/javascript">
         (function(window) { 
             const baseUrl = document.querySelector("base").href;
+
             const updateHistory = Ajax.prototype._UpdateHistory;
             const load = Ajax.prototype.Load;
 

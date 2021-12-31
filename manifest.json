@@ -1,0 +1,18 @@
+{
+    "short_name": "Pixel Routine",
+    "name": "Pixel Routine by Neptuo",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "https://pixely.pernate.cz/file.php?rid=7&width=192",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "https://pixely.pernate.cz/file.php?rid=7&width=512",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}

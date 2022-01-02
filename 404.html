@@ -58,7 +58,7 @@
             ajax.Initialize($(document.body)); 
         })(window);
 
-        $(".px").find("a").attr("href", location.pathname).click();
+        $(".px").find("a").attr("href", location.pathname + location.search).click();
     </script>
 </body>
 </html>

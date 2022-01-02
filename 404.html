@@ -30,7 +30,7 @@
     </script>
     <script type="text/javascript">
         (function(window) { 
-            const baseUrl = document.querySelector("base").href;
+            const baseUrl = new URL(document.querySelector("base").href).origin;
 
             const updateHistory = Ajax.prototype._UpdateHistory;
             const load = Ajax.prototype.Load;

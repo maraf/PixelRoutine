@@ -15,9 +15,9 @@
     <link href="/file.php?rid=7" rel="icon" type="image/png" />
     
     <link href="https://pixelroutine.neptuo.com/manifest.json" rel="manifest" />
-    <link href="https://pixelroutine.neptuo.com/css/fontawesome/all.min.css?version=v1" rel="stylesheet" type="text/css">
+    <link href="https://pixelroutine.neptuo.com/css/fontawesome/all.min.css?version=v341.7-preview1" rel="stylesheet" type="text/css">
 
-    <link href="/css/bootstrap/bootstrap.min.css?version=v341.6" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap/bootstrap.min.css?version=v341.7-preview1" rel="stylesheet" type="text/css">
     <link href="/file.php?fid=1" rel="stylesheet" type="text/css">
     <link href="/file.php?fid=3" rel="stylesheet" type="text/css">
     <link href="/file.php?fid=5" rel="stylesheet" type="text/css">
@@ -48,17 +48,16 @@
             const baseUrl = new URL(document.querySelector("base").href).origin;
 
             const updateHistory = Ajax.prototype._UpdateHistory;
-            const load = Ajax.prototype.Load;
-
             Ajax.prototype._UpdateHistory = function (url, replace) {
                 if (url) {
                     var u = new URL(url);
                     url = url.replace(u.origin, location.origin);
                 }
-
+                
                 updateHistory.call(this, url, replace);
             }
-
+            
+            const load = Ajax.prototype.Load;
             Ajax.prototype.Load = function(url) {
                 if (url) {
                     var u = new URL(url);
@@ -66,6 +65,27 @@
                 }
 
                 load.call(this, url);
+            }
+            
+            const includeUrlStyle = Ajax.prototype._IncludeUrlStyle;
+            Ajax.prototype._IncludeUrlStyle = function(url) {
+                if (url.startsWith("/")) {
+                    url = baseUrl + url;
+                }
+
+                return includeUrlStyle.call(this, url);
+            }
+
+            const isUrlStyleIncluded = Ajax.prototype._IsUrlStyleIncluded;
+            Ajax.prototype._IsUrlStyleIncluded = function(url) {
+                if (isUrlStyleIncluded.call(this, url)) {
+                    return true;
+                }
+
+                var u = new URL(url);
+                url = url.replace(u.origin, location.origin);
+
+                return isUrlStyleIncluded.call(this, url);
             }
 
             var ajax = new Ajax({ selector: ".px", modifyUrl: true, includeCredentials: true }); 

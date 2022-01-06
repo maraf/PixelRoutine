@@ -90,6 +90,15 @@
 
             var ajax = new Ajax({ selector: ".px", modifyUrl: true, includeCredentials: true }); 
             window["ajax"] = ajax; 
+
+            if (typeof(OnAjaxLoading) == "function") {
+                ajax.AddEventListener("loading", OnAjaxLoading);
+            }
+
+            if (typeof(OnAjaxCompleted) == "function") {
+                ajax.AddEventListener("completed", OnAjaxCompleted);
+            }
+
             ajax.Initialize($(document.body)); 
         })(window);
 

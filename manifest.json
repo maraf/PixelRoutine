@@ -5,19 +5,21 @@
     "display": "standalone",
     "icons": [
         {
-            "src": "https://pixely.pernate.cz/file.php?rid=7&width=192",
+            "src": "https://pixely.pernate.cz/file.php?rid=12&width=192",
             "type": "image/png",
-            "sizes": "192x192"
+            "sizes": "196x196",
+            "purpose": "any"
         },
         {
-            "src": "https://pixely.pernate.cz/file.php?rid=7&width=512",
+            "src": "https://pixely.pernate.cz/file.php?rid=12",
             "type": "image/png",
-            "sizes": "512x512"
+            "sizes": "1024x1024",
+            "purpose": "any"
         },
         {
-            "src": "https://pixely.pernate.cz/file.php?rid=11&width=192",
+            "src": "https://pixely.pernate.cz/file.php?rid=11&width=1024",
             "type": "image/png",
-            "sizes": "192x192",
+            "sizes": "1024x1024",
             "purpose": "maskable"
         }
     ]

@@ -76,6 +76,12 @@
                 return includeUrlStyle.call(this, url);
             }
 
+            const onLoadCompleted = Ajax.prototype._OnLoadCompleted;
+            Ajax.prototype._OnLoadCompleted = function(responseText, responseUrl) {
+                responseUrl = responseUrl.replace(document.head.querySelector("base").href, window.location.origin + "/")
+                onLoadCompleted.call(this, responseText, responseUrl);
+            };
+
             const isUrlStyleIncluded = Ajax.prototype._IsUrlStyleIncluded;
             Ajax.prototype._IsUrlStyleIncluded = function(url) {
                 if (isUrlStyleIncluded.call(this, url)) {

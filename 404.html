@@ -58,13 +58,13 @@
             }
             
             const load = Ajax.prototype.Load;
-            Ajax.prototype.Load = function(url) {
+            Ajax.prototype.Load = function(url, isNewPage) {
                 if (url) {
                     var u = new URL(url);
                     url = url.replace(u.origin, baseUrl);
                 }
 
-                load.call(this, url);
+                load.call(this, url, isNewPage);
             }
             
             const includeUrlStyle = Ajax.prototype._IncludeUrlStyle;
